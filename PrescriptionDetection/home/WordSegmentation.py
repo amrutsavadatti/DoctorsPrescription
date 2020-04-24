@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 
 
-def wordSegmentation(img, kernelSize=25, sigma=11, theta=7, minArea=0):
+def wordSegmentation(imgRGB, img, kernelSize=25, sigma=11, theta=7, minArea=0):
 	"""Scale space technique for word segmentation proposed by R. Manmatha: http://ciir.cs.umass.edu/pubfiles/mm-27.pdf
 	
 	Args:
@@ -38,7 +38,7 @@ def wordSegmentation(img, kernelSize=25, sigma=11, theta=7, minArea=0):
 		# append bounding box and image of word to result list
 		currBox = cv2.boundingRect(c) # returns (x, y, w, h)
 		(x, y, w, h) = currBox
-		currImg = img[y:y+h, x:x+w]
+		currImg = imgRGB[y:y+h, x:x+w]
 		res.append((currBox, currImg))
 
 	# return list of words, sorted by x-coordinate
@@ -50,6 +50,13 @@ def prepareImg(img, height):
 	assert img.ndim in (2, 3)
 	if img.ndim == 3:
 		img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+	h = img.shape[0]
+	factor = height / h
+	return cv2.resize(img, dsize=None, fx=factor, fy=factor)
+
+def xyz(img, height):
+	"""convert given image to grayscale image (if needed) and resize to desired height"""
+	assert img.ndim in (2, 3)
 	h = img.shape[0]
 	factor = height / h
 	return cv2.resize(img, dsize=None, fx=factor, fy=factor)

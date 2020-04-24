@@ -1,7 +1,7 @@
 {% extends 'basePage.html' %}
 
 {% block title %}
-	 Predicted Name
+   Predicted Name
 {% endblock title %}
 
 
@@ -14,32 +14,25 @@
 {% for m in a %}
 <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <!-- <img src="/static/preProcess/{{ imgs }}"  class="card-img-top" alt="..."> -->
-            <div class="card-body">
-              <p class="card-text">Your Prescribed Medicine is {{m}}</p>
-            </div>
+            <img src="/static/ml/{{ m }}"  class="card-img-top" alt="...">
           </div>
         </div>
+      </div>
         {% endfor %}
         {% for n in b %} 
-          <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <!-- <img src="/static/preProcess/{{ imgs }}"  class="card-img-top" alt="..."> -->
-            <div class="card-body">
-              <p class="card-text">Your Prescribed Medicine is {{n}}</p>
-            </div>
+        <div class="row">
+        <div class="col-md-4">
+        <div class="card mb-4 shadow-sm">
+          <div class="card-body">
+            <p class="card-text">Your Prescribed Medicine is {{n}}</p>
           </div>
         </div>
-            
-          
-        
-
-
-
+      </div>
 {% endfor %}
 
         </div>
     </div>  
   </div>
+
 
 {% endblock body %}
