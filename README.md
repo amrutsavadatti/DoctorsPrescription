@@ -14,7 +14,7 @@
 ### Segmented Prescription
 ![github-large](PrescriptionDetection/images/summary.png)
 
-####Select desired text
+### Select desired text
 ![github-large](PrescriptionDetection/images/select-page.PNG)
 
 ### Select desired text
